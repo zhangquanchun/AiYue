@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlDlg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <!--评论软件!-->
+
+   <LinearLayout
+       android:layout_width="240dp"
+       android:layout_height="300dp"
+       android:layout_centerInParent="true"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="240dp"
+           android:layout_height="wrap_content"
+           android:background="@drawable/pop_top_b"
+           android:paddingTop="20dp"
+           android:gravity="center_vertical"
+           android:orientation="vertical">
+           <com.cy.widgetlibrary.view.CustomCircleImageView
+               android:id="@+id/ivImage"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:layout_marginLeft="100dp"
+               android:src="@drawable/icon_sure"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#f0f0f0"
+                    android:textSize="15sp"
+                    android:text="删除后不能恢复，是否删除？"/>
+            </RelativeLayout>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/pop_btm_w"
+           android:orientation="vertical">
+
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="1dp"
+               android:background="#6cccda"/>
+           <RelativeLayout
+               android:id="@+id/rl_delete"
+               android:layout_width="240dp"
+               android:layout_height="wrap_content"
+               android:paddingTop="10dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   android:layout_marginTop="20dp"
+                   style="@style/dlg_text"
+                   android:text="删除"/>
+           </RelativeLayout>
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="1dp"
+               android:background="#6cccda"/>
+           <RelativeLayout
+               android:id="@+id/rl_save"
+               android:layout_width="240dp"
+               android:layout_height="wrap_content"
+               android:paddingTop="10dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   android:layout_marginTop="20dp"
+                   style="@style/dlg_text"
+                   android:text="不删除"/>
+
+           </RelativeLayout>
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="1dp"
+               android:background="#6cccda"/>
+       </LinearLayout>
+
+
+   </LinearLayout>
+
+
+</RelativeLayout>

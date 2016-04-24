@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_zhuye"
+    android:orientation="vertical">
+
+    <com.cy.widgetlibrary.content.CustomTitleView
+        android:id="@+id/vTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/rlPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vTitle"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="80dp"
+         >
+        <!--android:background="@drawable/edit_line"-->
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btnDelete"
+            android:background="@android:color/transparent"
+            android:hint="用户名(建议用好听点的)"
+            android:maxLength="8"
+            android:singleLine="true"
+            style="@style/editor_style"/>
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/btnDelete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_delete" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editPsw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlPhone"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/edit_line"
+        android:hint="密码(字母、数字或字符)"
+        android:password="true"
+        android:singleLine="true"
+        style="@style/editor_style" />
+    <EditText
+        android:id="@+id/edit_sure_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPsw"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/edit_line"
+        android:hint="确认密码"
+        android:password="true"
+        android:singleLine="true"
+        style="@style/editor_style" />
+
+    <Button
+        android:id="@+id/btnRegis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_sure_psw"
+        android:layout_marginLeft="@dimen/register_side_margin"
+        android:layout_marginRight="@dimen/register_side_margin"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btnlogin_selector"
+        android:text="注册"
+        android:textColor="#ffffffff"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/linAgreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRegis"
+        android:layout_marginLeft="@dimen/register_side_margin"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+    </LinearLayout>
+
+   <Button
+       android:id="@+id/btn_toLogin"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_centerHorizontal="true"
+       android:layout_marginBottom="60dp"
+       android:text="我已注册，直接登录"
+       android:paddingRight="30dp"
+       android:paddingLeft="30dp"
+       android:textColor="#fff"
+       android:background="@drawable/btn_tologin_selector"/>
+
+</RelativeLayout>

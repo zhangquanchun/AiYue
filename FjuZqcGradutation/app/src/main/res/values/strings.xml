@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ARead</string>
+    <string name="net_article">网络文章</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Ta们的文章</string>
+    <string name="font_fontFamily_medium">sans-serif</string>
+</resources>

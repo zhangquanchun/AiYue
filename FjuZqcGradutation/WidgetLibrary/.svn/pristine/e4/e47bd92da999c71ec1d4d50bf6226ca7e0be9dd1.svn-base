@@ -1,0 +1,104 @@
+package com.cy.widgetlibrary.content;
+
+
+import android.content.Context;
+import android.graphics.Color;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.TextView;
+
+public class DlgTextMsg extends DlgBase {
+	ConfirmDialogListener listener;
+	
+	boolean showCancel = true;
+	private TextView textView;
+
+	public DlgTextMsg(Context context, ConfirmDialogListener l) {
+		super(context);
+		textView = new TextView(context);
+		textView.setTextColor(Color.parseColor("#ff474747"));
+		textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		addContentView(textView);
+		listener = l;
+	}
+	
+	
+
+
+	public TextView getTextView() {
+		return textView;
+	}
+
+	public void setText(String text) {
+		getTextView().setText(text);
+
+	}
+	
+	public interface ConfirmDialogListener {
+		public void onOk(DlgTextMsg dlg);
+		public void onCancel();
+	}
+	
+	public static abstract class ConfirmOkListener implements ConfirmDialogListener {
+		@Override
+		public void onCancel() {
+			
+		}
+	}
+	
+	public void showCancel(boolean showCancel) {
+		this.showCancel = showCancel;
+	}
+	
+	
+	public void setBtnString(String okString,String cancelString) {
+		getBtnLeft().setText(okString);
+		getBtnRight().setText(cancelString);
+	}
+	
+	@Override
+	public void show() {
+		show(null,null);
+	}
+	
+	
+	public void show(String message) {
+		show(null,message);
+	}
+		
+	public void show(String title,String message) {
+		
+		if(message != null) {
+			getTextView().setText(message);
+		}
+				
+		getBtnLeft().setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(listener != null) {
+					listener.onOk(DlgTextMsg.this);
+				}
+				dialog.dismiss();
+			}
+		});
+		
+
+		getBtnRight().setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(listener != null) {
+					listener.onCancel();
+				}
+				dialog.dismiss();
+			}
+		});
+		super.show();
+		
+		
+		if(!showCancel) {
+			getBtnRight().setVisibility(View.GONE);
+		}
+	}
+}

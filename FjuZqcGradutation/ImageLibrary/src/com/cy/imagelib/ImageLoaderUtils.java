@@ -1,0 +1,222 @@
+package com.cy.imagelib;
+
+import android.content.res.Resources.NotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.cy.imagelibrary.R;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
+public class ImageLoaderUtils {
+	private static ImageLoaderUtils mInstance = null;
+
+	private ImageLoaderUtils() {
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+				ImageLibInitializer.getAppContext())
+				.threadPriority(Thread.NORM_PRIORITY - 2)
+				.denyCacheImageMultipleSizesInMemory()
+				.diskCacheFileNameGenerator(new Md5FileNameGenerator())
+				.diskCacheSize(50 * 1024 * 1024)
+				// 50M
+				.tasksProcessingOrder(QueueProcessingType.LIFO)
+				.writeDebugLogs() // 发布时可以移除
+				.build();
+		ImageLoader.getInstance().init(config);
+	}
+
+	public static ImageLoaderUtils getInstance() {
+		if (mInstance == null)
+			mInstance = new ImageLoaderUtils();
+		return mInstance;
+	}
+
+	/**
+	 * 图片地址类型
+	 */
+	public static enum ImageUriType {
+		FROM_WEB("http://", "http://site.com/image.png", "来自网络"), FROM_SD_CARD(
+				"file:///", "file:///mnt/sdcard/image.png", "来自SD卡"), FROM_SD_CARD_VIDEO_THUMB(
+				"file:///", "file:///mnt/sdcard/video.mp4", "来自SD卡的视频缩略图"), FROM_CONTENT_PROVIDER(
+				"content://", "content://media/external/images/media/13",
+				"来自content provider"), FROM_CONTENT_PROVIDER_THUMB(
+				"content://", "content://media/external/video/media/13",
+				"来自content provider的缩略图"), FROM_ASSETS("assets://",
+				"assets://image.png", "来自assets"), FROM_DRAWABLE_NOT_NINE_PATCH(
+				"drawable://", "drawable:// + R.drawable.img",
+				"来自drawable并且不是.9图");
+		public String prefix, example, tag;
+
+		ImageUriType(String prefix, String example, String tag) {
+			this.prefix = prefix;
+			this.example = example;
+			this.tag = tag;
+		}
+	}
+
+	/**
+	 * 根据图片类型创建URI
+	 * 
+	 * @param relativePath
+	 *            图片原来的相对地址，不包含文件分隔符/
+	 * @param uriType
+	 * @return
+	 */
+	public static String createUriByImageType(String relativePath, ImageUriType uriType) {
+		return uriType.prefix + relativePath;
+	}
+
+	/**
+	 * 创建显示图片属性
+	 * 
+	 * @param loadingId
+	 *            加载时的图片id
+	 * @param emptyId
+	 *            服务端图片为空时的图片id
+	 * @param failId
+	 *            加载失败时的图片id
+	 * @return
+	 */
+	public DisplayImageOptions createDisplayOptions(int loadingId, int emptyId,
+			int failId) {
+		return new DisplayImageOptions.Builder().showImageOnLoading(loadingId)
+				.showImageForEmptyUri(emptyId).showImageOnFail(failId)
+				.resetViewBeforeLoading(false).delayBeforeLoading(10)
+				.cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
+				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+				.bitmapConfig(Bitmap.Config.ARGB_8888)
+				.displayer(new SimpleBitmapDisplayer()).handler(new Handler())
+				.build();
+	}
+
+	/**
+	 * 创建显示图片属性，可以根据业务需求，添加自己的图片
+	 * 
+	 * @return
+	 */
+	public DisplayImageOptions createDisplayOptions() {
+		return createDisplayOptions(R.drawable.ic_launcher,
+				R.drawable.ic_launcher, R.drawable.ic_launcher);
+	}
+
+	/**
+	 * 加载图片
+	 * 
+	 * @param uri
+	 *            图片的URI
+	 * @param imgView
+	 *            图片控件
+	 */
+	public void loadImage(String uri, final ImageView imgView) {
+		loadImage(uri, imgView, 0, 0, -1, null);
+	}
+
+	/**
+	 * 加载图片
+	 * 
+	 * @param uri
+	 *            图片的URI
+	 * @param imgView
+	 *            图片控件
+	 * @param width
+	 *            图片宽度，若<=0，忽略该参数
+	 * @param height
+	 *            图片高度，若<=0，忽略该参数
+	 */
+	public void loadImage(String uri, final ImageView imgView, int width,
+			int height) {
+		loadImage(uri, imgView, width, height, -1, null);
+	}
+
+	/**
+	 * 加载图片
+	 * 
+	 * @param uri
+	 *            图片的URI
+	 * @param imgView
+	 *            图片控件
+	 * @param width
+	 *            图片宽度，若<=0，忽略该参数
+	 * @param height
+	 *            图片高度，若<=0，忽略该参数
+	 * @param defImgId默认图片id
+	 */
+	public void loadImage(String uri, final ImageView imgView, int width,
+			int height, int defImgId) {
+		loadImage(uri, imgView, width, height, defImgId, null);
+	}
+
+	/**
+	 * 加载图片
+	 * 
+	 * @param uri
+	 *            图片的URI
+	 * @param imgView
+	 *            图片控件
+	 * @param width
+	 *            图片宽度，若<=0，忽略该参数
+	 * @param height
+	 *            图片高度，若<=0，忽略该参数
+	 * @param defImgId默认图片id
+	 * @param options
+	 *            图片显示属性，请通过 {@link ImageLoaderUtils#createDisplayOptions()}
+	 *            方法进行创建，若为null，则忽略
+	 */
+	public void loadImage(String uri, final ImageView imgView, int width,
+			int height, int defImgId, DisplayImageOptions options) {
+		if (TextUtils.isEmpty(uri) || imgView == null)
+			return;
+		options = options == null ? createDisplayOptions() : options;
+		Drawable drawable = null;
+		if(defImgId != -1) {
+			try {
+				drawable = ImageLibInitializer.getResources().getDrawable(defImgId);
+				imgView.setBackgroundDrawable(drawable);
+			} catch (NotFoundException e) {
+				e.printStackTrace();
+				drawable = null;
+			}
+		}
+		if (width <= 0 || height <= 0) {
+
+			ImageLoader.getInstance().displayImage(uri, imgView, options);
+		} else {
+			SimpleImageLoadingListener l = new SimpleImageLoadingListener() {
+				@Override
+				public void onLoadingComplete(String imageUri, View view,
+						Bitmap loadedImage) {
+					imgView.setImageBitmap(loadedImage);
+				}
+			};
+			ImageLoader.getInstance().loadImage(uri,
+					new ImageSize(width, height), options, l);
+		}
+	}
+
+	/**
+	 * 清除缓存
+	 */
+	public void cleanCache() {
+		ImageLoader.getInstance().clearDiskCache();
+		ImageLoader.getInstance().clearMemoryCache();
+	}
+
+	/**
+	 * 释放单例
+	 */
+	public void release() {
+		cleanCache();
+		mInstance = null;
+	}
+}

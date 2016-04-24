@@ -1,0 +1,26 @@
+<resources>
+
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorMain</item>
+
+
+        <item name="colorPrimaryDark">@color/colorMain</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated
+             which is used to tint widgets -->
+        <!--<item name="drawerArrowStyle">@style/ToolbarColorStyle</item>-->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+
+    </style>
+
+    <style name="Theme_CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+</resources>

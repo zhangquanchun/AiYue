@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlDlg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <!--评论软件!-->
+
+   <LinearLayout
+       android:layout_width="240dp"
+       android:layout_height="300dp"
+       android:layout_centerInParent="true"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="240dp"
+           android:layout_height="wrap_content"
+           android:background="@drawable/pop_top_b"
+           android:paddingTop="20dp"
+           android:gravity="center_vertical"
+           android:orientation="vertical">
+           <ImageView
+               android:id="@+id/ivImage"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:layout_marginLeft="100dp"
+               android:src="@drawable/icon_good"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="#f0f0f0"
+                android:textSize="15sp"
+                android:text="发布文章成功"/>
+            <TextView
+                android:id="@+id/tvDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/tvUserName"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="4dp"
+                android:textColor="#f0f0f0"
+                android:textSize="15sp"
+                android:text="是否继续发布呢？"/>
+        </RelativeLayout>
+
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/pop_btm_w"
+           android:orientation="vertical">
+
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="1dp"
+               android:background="#6cccda"/>
+           <RelativeLayout
+               android:id="@+id/rlNoOpinion"
+               android:layout_width="240dp"
+               android:layout_height="wrap_content"
+               android:paddingTop="10dp">
+               <TextView
+                   android:id="@+id/tvWriteOther"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   android:layout_marginTop="20dp"
+                   style="@style/dlg_text"
+                   android:text="再来一篇"/>
+
+           </RelativeLayout>
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="1dp"
+               android:background="#6cccda"/>
+           <RelativeLayout
+               android:id="@+id/rlIgnore"
+               android:layout_width="240dp"
+               android:layout_height="wrap_content"
+               android:paddingTop="10dp">
+               <TextView
+                   android:id="@+id/tvSeeOther"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   android:layout_marginTop="20dp"
+                   style="@style/dlg_text"
+                   android:text="去看看别人的文章"/>
+
+           </RelativeLayout>
+           <ImageView
+               android:layout_width="fill_parent"
+               android:layout_height="1dp"
+               android:background="#6cccda"/>
+       </LinearLayout>
+
+
+   </LinearLayout>
+
+
+</RelativeLayout>

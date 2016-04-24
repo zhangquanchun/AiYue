@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.cy.widgetlibrary.content.CustomTitleView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.cy.widgetlibrary.content.CustomTitleView>
+    <ImageView
+        android:id="@+id/ivPen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/icon_release"/>
+    <RelativeLayout
+        android:id="@+id/rlNoArticle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvTitle"
+        android:visibility="gone"
+        android:padding="50dp">
+        <TextView
+            android:id="@+id/tvNotify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:text="还没有人写作，点击右下角图标可以创作哦！"
+            android:textColor="@color/windowsText"
+            android:background="@drawable/article_content"/>
+        <ImageView
+            android:id="@+id/ivWriteArticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_edit_light"/>
+    </RelativeLayout>
+    <com.fju.zqc.fjuzqcgradutation.swipemenulistview.SwipeMenuListView
+        android:id="@+id/listView"
+        android:layout_below="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </com.fju.zqc.fjuzqcgradutation.swipemenulistview.SwipeMenuListView>
+
+</RelativeLayout>

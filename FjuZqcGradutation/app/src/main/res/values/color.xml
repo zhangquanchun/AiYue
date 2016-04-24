@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorMain">@color/blue</color>
+    <color name="colorMainDark">@color/blue</color>
+    <color name="colorMainAccent">#e8eaf6</color>
+    <color name="colorMainText">#ffffff</color>
+    <color name="colorMainBg">#FAFAFA</color>
+
+    <color name="colorText">#000000</color>
+    <color name="colorTextLight">#FFFFFF</color>
+
+    <color name="navdrawer_background">#FFFFFF</color>
+    <color name="tab_background">@color/blue</color>
+    <color name="tab_indicator_color">#FFF</color>
+
+    <color name="article_content_color">#797979</color>
+    <color name="article_font">#434343</color>
+    <color name="article_title">#434343</color>
+    <color name="windows">@color/colorMain</color>
+    <color name="windowsText">#797979</color>
+    <color name="blue">#05bbe2</color>
+    <color name="default_color">#02a6d8</color>
+    <color name="default_color_dark">#52a6b8</color>
+    <color name="color_red">#fe2741</color>
+    <color name="red">#FF0000</color>
+    <color name="color_white">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="btn_blue_normal">#05bbe2</color>
+    <color name="btn_blue_pressed">#0999b8</color>
+    <color name="editor_border_normal">#80505050</color>
+    <color name="editor_border_focused">#0770a7</color>
+    <color name="editor_border_error_hint">#ff89aa</color>
+    <color name="bg_log_in">#10000000</color>
+    <!-- 新UI字体颜色 -->
+    <color name="main_text_color">#434d56</color>
+    <color name="sub_text_color">#747d88</color>
+    <color name="viewColor">#efefef</color>
+    <color name="bg_color">#eeeeee</color>
+    <color name="yellow">#FDDB37</color>
+    <color name="textColor">#eeeeee</color>
+</resources>

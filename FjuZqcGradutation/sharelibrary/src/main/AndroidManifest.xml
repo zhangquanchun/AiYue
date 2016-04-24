@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fju.zqc.sharelibrary" >
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name" >
+        <!--微信分享回调 -->
+        <activity
+            android:name="com.fju.zqc.fjuzqcgradutation.wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
